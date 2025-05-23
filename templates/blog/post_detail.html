@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+    <small>Дата публикации: {{ post.pub_date }}</small>
+
+    <br><br>
+    <a href="{% url 'post_list' %}">← Назад к списку статей</a>
+</body>
+</html>
