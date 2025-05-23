@@ -1,14 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ post.title }}</title>
-</head>
-<body>
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.content }}</p>
-    <small>Дата публикации: {{ post.pub_date }}</small>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <br><br>
-    <a href="{% url 'post_list' %}">← Назад к списку статей</a>
-</body>
-</html>
+<div class="container">
+    <h1>{{ post.title }}</h1>
+    <span class="meta">Опубликовано: {{ post.pub_date|date:"d.m.Y H:i" }}</span>
+
+    {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+    {% endif %}
+
+    <div class="post-content">
+        {{ post.content }}
+    </div>
+
+    <br>
+    <a href="{% url 'post_list' %}" class="back-link">← Назад к списку статей</a>
+</div>
